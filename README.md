@@ -70,5 +70,19 @@
     - Sign Up also logs you in
     - Disable button if all fields not filled
  
- 
- 
+ ---
+ ## Plan
+- [ ] Create initial project and install required packages
+- [ ] Set up database repository
+- [ ] Setup user authentication with login and logout
+- [ ] Sign up page
+- [ ] Basic list of benches 
+- [ ] Implement Pagination and filtering
+- [ ] Add a bench 
+- [ ] Basic bench details
+- [ ] Add user reviews to bench details
+- [ ] Display a map with markers 
+- [ ] Implement clicking on a bench
+- [ ] Implement clicking on blank space
+- [ ] Make list update when map moves 
+- [ ] Implement filtering
