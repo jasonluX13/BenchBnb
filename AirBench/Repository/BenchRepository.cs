@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 
 namespace AirBench.Repository
 {
@@ -18,7 +19,15 @@ namespace AirBench.Repository
 
         public List<Bench> GetAll()
         {
-            return context.Benches.ToList();
+            List<Bench> benches =  context.Benches
+                .Include(b => b.User)
+                .Include(b => b.Reviews)
+                .ToList();
+            foreach (Bench bench in benches)
+            {
+                bench.SetRating();
+            }
+            return benches;
         }
     }
 }
