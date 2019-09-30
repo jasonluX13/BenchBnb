@@ -72,7 +72,7 @@
  
  ---
  ## Plan
-- [ ] Create initial project and install required packages
+- [x] Create initial project and install required packages
 - [ ] Set up database repository
 - [ ] Setup user authentication with login and logout
 - [ ] Sign up page
