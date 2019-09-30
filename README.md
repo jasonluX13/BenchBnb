@@ -70,7 +70,8 @@
     - Sign Up also logs you in
     - Disable button if all fields not filled
  
- ---
+---
+---
  ## Plan
 - [x] Create initial project and install required packages
 - [ ] Set up database repository
@@ -86,10 +87,58 @@
 - [ ] Implement clicking on blank space
 - [ ] Make list update when map moves 
 - [ ] Implement filtering
-
+---
+---
 ## Details
 
 ### Models
 
 #### Bench 
-  
+  - Properties: Id, Description, NumSeats, Lat, Long, CreatorId
+  - Methods: 
+
+#### User
+  - Properties: Id, FirstName, LastName, Email, HashedPassword
+  - Methods: 
+
+#### Review
+  - Properties: Id, UserId, Rating, Feedback, TimeSubmitted
+  - Methods: 
+---
+### Controllers
+
+#### HomeController
+  Contains the homepage which includes the map and list.
+
+  Methods: Index
+
+  Views: Index
+
+
+#### AccountController
+  Responsible for login, logout and signup.
+
+  Methods: Login, Logout, Signup
+
+  Views: Login, Signup
+
+#### BenchController
+  Responsible for adding a bench and bench details.
+
+  Methods: Add, Details
+
+  Views: Add, Details
+
+---
+### Repositories
+
+#### BenchRepository
+
+  Methods: 
+  - GetBench(int id)  
+  - GetAll()
+  - GetFiltered(int min, int max)
+  - AddBench(Bench bench)
+
+
+
