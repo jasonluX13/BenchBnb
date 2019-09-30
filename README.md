@@ -86,3 +86,10 @@
 - [ ] Implement clicking on blank space
 - [ ] Make list update when map moves 
 - [ ] Implement filtering
+
+## Details
+
+### Models
+
+#### Bench 
+  
