@@ -102,7 +102,7 @@
   - Methods: 
 
 #### Review
-  - Properties: Id, UserId, Rating, Feedback, TimeSubmitted
+  - Properties: Id, UserId, BenchId, Rating, Feedback, TimeSubmitted
   - Methods: 
 ---
 ### Controllers
