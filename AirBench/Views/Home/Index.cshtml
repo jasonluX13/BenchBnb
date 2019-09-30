@@ -1,1 +1,21 @@
-﻿<h1>Welcome to AirBench.</h1>
+﻿@model List<AirBench.Models.Bench>
+
+<h1>Welcome to AirBench.</h1>
+
+
+<table class="pure-table">
+    <thead>
+        <tr>
+            <th>Benches</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bench in Model)
+        {
+            <tr>
+                <td>@bench.Description</td>
+            </tr>
+        }
+       
+    </tbody>
+</table>
