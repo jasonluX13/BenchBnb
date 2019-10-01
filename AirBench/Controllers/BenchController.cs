@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace AirBench.Controllers
 {
+    [Authorize]
     public class BenchController : Controller
     {
         private Context context;
