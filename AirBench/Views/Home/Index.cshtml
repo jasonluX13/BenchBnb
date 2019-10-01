@@ -2,8 +2,9 @@
 
 <h1>Welcome to AirBench.</h1>
 
+@Html.ActionLink("Add a Bench", "Add", "Bench")
 
-<table class="pure-table">
+<table class="pure-table pure-table-horizontal">
     <thead>
         <tr>
             <th>Benches</th>
@@ -13,7 +14,19 @@
         @foreach (var bench in Model)
         {
             <tr>
-                <td>@bench.Description</td>
+                <td>
+                    <ul>
+         
+                        @if(bench.GetRating() == null)
+                        {
+                            <li>No Ratings</li>
+                        }else
+                        {
+                            <li>@bench.GetRating()</li>
+                        }
+                        <li>@bench.Description</li>
+                    </ul>
+                </td>
             </tr>
         }
        

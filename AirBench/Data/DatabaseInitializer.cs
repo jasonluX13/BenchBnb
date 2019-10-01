@@ -28,8 +28,14 @@ namespace AirBench.Data
                 User = jason,
                 NumSeats = 4
             };
-
+            Bench park = new Bench()
+            {
+                Description = "A park bench",
+                User = jason,
+                NumSeats = 6
+            };
             context.Benches.Add(old);
+            context.Benches.Add(park);
             context.SaveChanges();
         }
     }

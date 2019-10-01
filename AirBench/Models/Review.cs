@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -14,6 +15,7 @@ namespace AirBench.Models
 
         public int Id { get; set; }
         public double Rating { get; set; }
+        [Required]
         public string Feedback { get; set; }
         public DateTimeOffset SubmitedOn{ get; set;}
 
