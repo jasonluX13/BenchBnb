@@ -1,6 +1,15 @@
 ﻿@model List<AirBench.Models.Bench>
 
-<h1>Welcome to AirBench.</h1>
+
+@if (Request.IsAuthenticated)
+{
+    <h1>Welcome to AirBench, @ViewBag.Name! </h1>
+}
+else
+{
+    <h1>Welcome to AirBench </h1>
+}
+
 
 @Html.ActionLink("Add a Bench", "Add", "Bench")
 

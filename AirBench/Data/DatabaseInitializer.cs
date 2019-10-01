@@ -16,7 +16,7 @@ namespace AirBench.Data
                 FirstName= "Jason",
                 LastName ="Lu",
                 Email = "jlu@gmail.com",
-                HashedPassword = ""
+                HashedPassword = "$2a$12$.Pi4p8i14tFPafiLTHy...idhMN.9NEIKr8y7mM4TpgFYStIEGNae"
             };
 
             context.Users.Add(jason);
