@@ -160,6 +160,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BenchController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Data\Context.cs" />
@@ -174,6 +175,7 @@
     <Compile Include="Repository\BenchRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="ViewModels\CreateBench.cs" />
+    <Compile Include="ViewModels\LoginUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\pure.css" />
@@ -198,6 +200,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
