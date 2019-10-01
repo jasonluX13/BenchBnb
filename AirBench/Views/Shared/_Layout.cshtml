@@ -8,6 +8,20 @@
 
 </head>
 <body>
+    <div class="pure-menu pure-menu-horizontal">
+        <a href="#" class="pure-menu-heading pure-menu-link">AirBench</a>
+        <ul class="pure-menu-list">
+            @if (Request.IsAuthenticated)
+            {
+                <li class="pure-menu-item">@Html.ActionLink("Logout", "Logout", "Account", null, new { @class = "pure-menu-link" })</li>
+            }
+            else
+            {
+                <li class="pure-menu-item">@Html.ActionLink("Login", "Login", "Account", null, new { @class = "pure-menu-link" })</li>
+            }
+
+        </ul>
+    </div>
     @RenderBody()
     
     @RenderSection("scripts", required: false)

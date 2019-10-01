@@ -15,7 +15,12 @@ namespace AirBench.Controllers
         }
         public ActionResult Index()
         {
-
+            if (Request.IsAuthenticated)
+            {
+                User current = new UserRepository(context).GetByEmail(User.Identity.Name);
+                ViewBag.Name = current.FirstName + ' ' + current.LastName;
+            }
+ 
             ViewBag.Title = "Air Bench";
             BenchRepository repo = new BenchRepository(context);
             List<Bench> users = repo.GetAll();
