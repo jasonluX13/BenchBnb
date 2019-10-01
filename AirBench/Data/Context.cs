@@ -23,7 +23,7 @@ namespace AirBench.Data
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Entity<Review>()
                 .HasRequired(r => r.Bench)
-                .WithMany()
+                .WithMany(b => b.Reviews)
                 .WillCascadeOnDelete(false);
             modelBuilder.Entity<Bench>()
                 .HasRequired(b => b.User)
