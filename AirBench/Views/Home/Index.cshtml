@@ -34,6 +34,7 @@ else
                             <li>@bench.GetRating()</li>
                         }
                         <li>@bench.Description</li>
+                        <li>@Html.ActionLink("Details", "Details", "Bench", new { id = bench.Id }, null)</li>
                     </ul>
                 </td>
             </tr>

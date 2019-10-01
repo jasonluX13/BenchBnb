@@ -18,7 +18,11 @@ namespace AirBench.Controllers
             if (Request.IsAuthenticated)
             {
                 User current = new UserRepository(context).GetByEmail(User.Identity.Name);
-                ViewBag.Name = current.FirstName + ' ' + current.LastName;
+                if (current != null)
+                {
+                    ViewBag.Name = current.FirstName + ' ' + current.LastName;
+                }
+                
             }
  
             ViewBag.Title = "Air Bench";

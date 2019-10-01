@@ -20,6 +20,7 @@ namespace AirBench.Controllers
             context = new Context();
         }
         // GET: Bench
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return RedirectToAction("Index", "Home");
@@ -54,6 +55,17 @@ namespace AirBench.Controllers
                 return View(viewModel);
             }
             
+        }
+
+        [AllowAnonymous]
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            Bench bench = new BenchRepository(context).GetById((int)id);
+            return View(bench);
         }
     }
 }
