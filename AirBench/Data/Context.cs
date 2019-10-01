@@ -25,6 +25,10 @@ namespace AirBench.Data
                 .HasRequired(r => r.Bench)
                 .WithMany()
                 .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Bench>()
+                .HasRequired(b => b.User)
+                .WithMany()
+                .WillCascadeOnDelete(false);
         }
 
     }

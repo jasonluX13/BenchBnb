@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+
+namespace AirBench.ViewModels
+{
+    public class CreateBench
+    {
+        public string Description { get; set; }
+
+        [Display(Name ="Number of Seats")]
+        public int NumSeats { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+    }
+}

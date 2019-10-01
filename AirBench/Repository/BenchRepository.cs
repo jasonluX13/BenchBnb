@@ -29,5 +29,11 @@ namespace AirBench.Repository
             }
             return benches;
         }
+
+        public void AddBench(Bench bench)
+        {
+            context.Benches.Add(bench);
+            context.SaveChanges();
+        }
     }
 }

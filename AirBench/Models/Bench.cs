@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -12,7 +13,15 @@ namespace AirBench.Models
             Reviews = new List<Review>();
         }
 
+        public Bench(string description, int numSeats, double lat, double lon)
+        {
+            Description = description;
+            NumSeats = numSeats;
+            Latitude = lat;
+            Longitude = lon;
+        }
         public int Id { get; set; }
+        [Required]
         public string Description { get; set; }
         public int NumSeats { get; set; }
         public double Latitude { get; set; }
