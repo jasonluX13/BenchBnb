@@ -30,6 +30,17 @@ namespace AirBench.Repository
             return benches;
         }
 
+        public Bench GetById(int id)
+        {
+            Bench bench = context.Benches
+                .Include(b => b.User)
+                .Include(b => b.Reviews)
+                .Where(b => b.Id == id)
+                .SingleOrDefault();
+            bench.SetRating();
+            return bench;
+        }
+
         public void AddBench(Bench bench)
         {
             context.Benches.Add(bench);
