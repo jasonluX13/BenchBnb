@@ -164,6 +164,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BenchApiController.cs" />
     <Compile Include="Controllers\BenchController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReviewController.cs" />
@@ -173,10 +174,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Bench.cs" />
+    <Compile Include="Models\BenchInfo.cs" />
+    <Compile Include="Models\BenchResponse.cs" />
     <Compile Include="Models\Review.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\BenchAPIRepository.cs" />
     <Compile Include="Repository\BenchRepository.cs" />
+    <Compile Include="Repository\IBenchRepository.cs" />
     <Compile Include="Repository\ReviewRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="ViewModels\CreateBench.cs" />
@@ -185,9 +190,11 @@
     <Compile Include="ViewModels\RegisterUser.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Index.css" />
     <Content Include="Content\pure.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\Home.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

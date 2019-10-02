@@ -4,7 +4,7 @@ using Unity;
 using Unity.Mvc5;
 using Mvc5Resolver = Unity.Mvc5.UnityDependencyResolver;
 using ApiResolver = Unity.WebApi.UnityDependencyResolver;
-
+using AirBench.Repository;
 
 namespace AirBench
 {
@@ -19,9 +19,10 @@ namespace AirBench
 
             // e.g. container.RegisterType<ITestService, TestService>();
 
-        // e.g. container.RegisterType<ITestService, TestService>();
+            // e.g. container.RegisterType<ITestService, TestService>();
+            container.RegisterType<IBenchRepository, BenchAPIRepository>();
 
-        DependencyResolver.SetResolver(new Mvc5Resolver(container));
+            DependencyResolver.SetResolver(new Mvc5Resolver(container));
             GlobalConfiguration.Configuration.DependencyResolver = new ApiResolver(container);
         }
     }

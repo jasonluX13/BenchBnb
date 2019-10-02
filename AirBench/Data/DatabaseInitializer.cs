@@ -26,16 +26,32 @@ namespace AirBench.Data
             {
                 Description = "An old bench",
                 User = jason,
-                NumSeats = 4
+                NumSeats = 4,
+                Latitude = 40.757352,
+                Longitude = -73.923220
             };
+           
             Bench park = new Bench()
             {
                 Description = "A park bench",
                 User = jason,
-                NumSeats = 6
+                NumSeats = 6,
+                Latitude = 40.755262,
+                Longitude = -73.925210
             };
             context.Benches.Add(old);
             context.Benches.Add(park);
+
+            Review rev1 = new Review()
+            {
+                Rating = 4,
+                Feedback = "Not bad, would sit again.",
+                SubmitedOn = DateTime.Now.AddDays(-2),
+                User = jason,
+                Bench = old
+            };
+            context.Reviews.Add(rev1);
+
             context.SaveChanges();
         }
     }
