@@ -27,7 +27,7 @@ namespace AirBench.Controllers
         {
             List<Bench> benches = await _repository.GetAll();
             List<BenchInfo> infos = benches
-                .Select(x => new BenchInfo() { Description = x.Description, Latitude = x.Latitude, Longitude = x.Longitude, NumSeats = x.NumSeats })
+                .Select(x => new BenchInfo() { Id = x.Id, Description = x.Description, Latitude = x.Latitude, Longitude = x.Longitude, NumSeats = x.NumSeats })
                 .ToList();
 
             BenchResponse response = new BenchResponse()
