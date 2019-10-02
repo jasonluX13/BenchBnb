@@ -28,9 +28,16 @@ else
 
 
     <div id="list">
+        <div id="filter">
+            <label>Minimum Seats</label>
+            <input id="min"  type="number" value="1" />
+            <br />
+            <label>Maximum Seats</label>
+            <input id="max" type="number" value="10" />
+        </div>
         @Html.ActionLink("Add a Bench", "Add", "Bench")
 
-        <table class="pure-table pure-table-horizontal">
+        <table id="list" class="pure-table pure-table-horizontal">
             <thead>
                 <tr>
                     <th>Benches</th>
@@ -39,7 +46,7 @@ else
             <tbody>
                 @foreach (var bench in Model)
             {
-                    <tr>
+                    <tr data-numseats=@bench.NumSeats>
                         <td>
                             <ul>
 
