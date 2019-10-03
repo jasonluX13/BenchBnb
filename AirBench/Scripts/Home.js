@@ -16,13 +16,42 @@
         return await fetch("/api/bench/all");
     }
 
+    function IsMarker(lat, lon, mlat, mlon){
+        const maxDiff = 30;
+        let latDiff = Math.abs(lat - mlat);
+        let lonDiff = Math.abs(lon - mlon);
+        if (latDiff < maxDiff && lonDiff < maxDiff){
+            return true;
+        }
+        return false;
+    }
+    function coordDistance(x1, y1, x2, y2){
+        let xdist = x1 - x2;
+        let ydist = y1 -y2;
+        console.log(xdist);
+        return [xdist, ydist];
+    }
     function clickMarker(event){
         var lonlat = ol.proj.transform(event.coordinate, 'EPSG:3857', 'EPSG:4326');
-        console.log(lonlat[0]);
         document.cookie = "lat=" + lonlat[1] + ";path=/";
         document.cookie = "lon=" + lonlat[0] + ";path=/";
-        console.log(document.cookie);
-        document.location.href = "/Bench/Add";
+        //console.log(document.cookie);
+        //console.log(event.coordinate);
+        let benchlonlat = [benches[0]["Longitude"], benches[0]["Latitude"]];
+        let coordinates = ol.proj.fromLonLat(benchlonlat);
+        //console.log(coordinates);
+        //console.log(coordDistance(event.coordinate[0],event.coordinate[1], coordinates[0], coordinates[1]));
+        for(let i = 0; i < benches.length; i++){
+            let benchlonlat = [benches[i]["Longitude"], benches[i]["Latitude"]];
+            let coordinates = ol.proj.fromLonLat(benchlonlat);
+            //console.log("Distance:" + coordDistance(event.coordinate[0],event.coordinate[1], coordinates[0], coordinates[1]));
+            if (IsMarker(coordinates[0], coordinates[1], event.coordinate[0],event.coordinate[1])){
+                console.log(benches[i]["Id"]);
+
+            }
+        }
+
+        //document.location.href = "/Bench/Add";
 
     }
 
