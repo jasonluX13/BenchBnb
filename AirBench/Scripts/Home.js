@@ -1,4 +1,6 @@
 ﻿(async () => {
+    const maxEntries = 5;
+
     var map = new ol.Map({
         target: 'map',
         layers: [
@@ -103,17 +105,26 @@
         source: vectorSource,
     });
     map.on('click', clickMarker);
-
-    function updateList(){
+    function resetList(){
+        let rows = document.querySelectorAll('#list tr');
+        for (let i= 0 ; i < rows.length; i++){
+            rows[i].style.display = "";
+        }
+    }
+    function updateList(pageNum){
+        resetList();
         let min = parseInt(document.getElementById('min').value, 10);
         let max = parseInt(document.getElementById('max').value, 10);
         console.log(min, max);
-       
-
+        
+        //let pageStart = (pageNum-1)*maxEntries + 1;
+        //let pageEnd = pageStart + maxEntries;
         //filter table rows based on data -> id
         let table = document.getElementById("list");
         let rows = table.getElementsByTagName("tr");
-        for (let i=1; i < rows.length; i++){
+        rows[0].style.display = "";
+
+        for (let i=0; i < rows.length; i++){
             let numseats =  parseInt(rows[i].getAttribute("data-numseats"), 10);
             
             if (isNaN(min) && isNaN(max)){
@@ -129,10 +140,43 @@
                 rows[i].style.display = "";
             }
         }
-
+        showPage(pageNum, false);
+        
     }
-    document.getElementById('min').addEventListener('keyup', updateList);
-    document.getElementById('max').addEventListener('keyup', updateList);
+    function showPage(pageNum, isInitial){
+        //const maxEntries = 5; 
+        let rows = document.querySelectorAll('#list tr');
+        let min = (pageNum-1)*maxEntries + 1;
+        let max = min + maxEntries;
+        if (isInitial){
+            for (let i= 0 ; i < rows.length; i++){
+                if (i >= min && i < max){
+                    rows[i].style.display = "";
+                }
+                else if (i != 0){
+                    rows[i].style.display = "none";            
+                }
+            }
+        }
+        else {
+            let count = 0;
+            for (let i= 0 ; i < rows.length; i++){
+                if (rows[i].style.display == "" && count > maxEntries){
+                    rows[i].style.display = "none";
+                }
+                else if (rows[i].style.display == "") {
+                    count++;         
+                }
+                console.log(count);
+            }
+        }
+        
+    }
+    showPage(1,true);
+    document.getElementById('filter').addEventListener('keyup', function (){
+        updateList(1);
+    });
+    //document.getElementById('max').addEventListener('keyup', updateList);
     map.addLayer(markerVectorLayer);
 
 })();
