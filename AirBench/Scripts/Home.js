@@ -16,10 +16,24 @@
         return await fetch("/api/bench/all");
     }
 
+    function clickMarker(event){
+        //console.log('click');
+        //console.log(event.pixel);
+        //console.log(map.getCoordinateFromPixel(event.pixel));
+        var lonlat = ol.proj.transform(event.coordinate, 'EPSG:3857', 'EPSG:4326');
+        console.log(lonlat[0]);
+        document.cookie = "lat=" + lonlat[1] + ";path=/";
+        document.cookie = "lon=" + lonlat[0] + ";path=/";
+        console.log(document.cookie);
+        document.location.href = "/Bench/Add";
+        //displayFeatureInfo(event.pixel);
+    }
+
     let response = await getBenches();
     let jsonResult = await response.json();
     let benches = jsonResult.Benches;
     console.log(benches);
+
     //let latlongs = [
     //    [-73.923220, 40.757352],
     //    [-73.925230, 40.753255],
@@ -44,6 +58,8 @@
     var markerVectorLayer = new ol.layer.Vector({
         source: vectorSource,
     });
+    map.on('click', clickMarker);
+    //map.addEventListener('click', clickMarker);
     map.addLayer(markerVectorLayer);
 
 })();

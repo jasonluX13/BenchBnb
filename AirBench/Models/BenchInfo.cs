@@ -7,6 +7,7 @@ namespace AirBench.Models
 {
     public class BenchInfo
     {
+        public int Id { get; set; }
         public string Description { get; set; }
         public int NumSeats { get; set; }
         public double Latitude { get; set; }
