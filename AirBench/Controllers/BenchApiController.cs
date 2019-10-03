@@ -37,10 +37,5 @@ namespace AirBench.Controllers
             return response;
         }
 
-        //[Route("filtered")]
-        //async public Task<BenchResponse> Get(FilterRequest request)
-        //{
-            
-        //}
     }
 }

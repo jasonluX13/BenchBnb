@@ -5,4 +5,14 @@
 #homepage{
     display: flex;
     align-content: space-between;
+    flex-wrap: wrap;
+}
+
+#list {
+    word-break: break-word;
+}
+
+#list-container {
+    width: 25%;
+    min-width: 300px;
 }

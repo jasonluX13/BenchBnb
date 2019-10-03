@@ -177,7 +177,6 @@
     <Compile Include="Models\Bench.cs" />
     <Compile Include="Models\BenchInfo.cs" />
     <Compile Include="Models\BenchResponse.cs" />
-    <Compile Include="Models\FilterRequest.cs" />
     <Compile Include="Models\Review.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -41,7 +41,21 @@ namespace AirBench.Data
             };
             context.Benches.Add(old);
             context.Benches.Add(park);
-
+            for (int i = 0; i < 60; i++)
+            {
+                Random rand = new Random();
+                int latOffset = rand.Next(i) - rand.Next(i);
+                int lonOffset = rand.Next(i) - rand.Next(i);
+                Bench newBench = new Bench()
+                {
+                    Description = $"Bench #{i}",
+                    User = jason,
+                    NumSeats = 6,
+                    Latitude = 40.755262 + latOffset * 0.001,
+                    Longitude = -73.925210 - lonOffset * 0.001
+                };
+                context.Benches.Add(newBench);
+            }
             Review rev1 = new Review()
             {
                 Rating = 4,

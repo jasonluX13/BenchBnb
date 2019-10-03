@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="~/Content/Index.css" type="text/css">
     <style>
         .map {
-            height: 400px;
-            width: 50%;
+            height: 600px;
+            width: 70%;
         }
     </style>
     <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.0.1/build/ol.js"></script> 
@@ -27,7 +27,7 @@ else
     <div id="map" class="map"></div>
 
 
-    <div id="list">
+    <div id="list-container">
         <div id="filter">
             <label>Minimum Seats</label>
             <input id="min"  type="number" value="1" />
@@ -56,7 +56,7 @@ else
                                 }
                                 else
                                 {
-                                    <li>@bench.GetRating()</li>
+                                    <li>Rating: @bench.GetRating()</li>
                                 }
                                 <li>@bench.Description</li>
                                 <li>@Html.ActionLink("Details", "Details", "Bench", new { id = bench.Id }, null)</li>
