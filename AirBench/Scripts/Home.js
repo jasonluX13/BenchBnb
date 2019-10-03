@@ -71,16 +71,12 @@
         source: vectorSource,
     });
     map.on('click', clickMarker);
-    //map.addEventListener('click', clickMarker);
+
     function updateList(){
-        let min = document.getElementById('min').value;
-        let max = document.getElementById('max').value;
+        let min = parseInt(document.getElementById('min').value, 10);
+        let max = parseInt(document.getElementById('max').value, 10);
         console.log(min, max);
-        //console.log(min, max);
-        //call api
-        //let response = await fetch("/api/bench/filtered/?min=" + min + "&max=" + max);
-        //let jsonResult = await response.json();
-        //console.log(jsonResult);
+       
 
         //filter table rows based on data -> id
         let table = document.getElementById("list");
@@ -88,14 +84,17 @@
         for (let i=1; i < rows.length; i++){
             let numseats =  parseInt(rows[i].getAttribute("data-numseats"), 10);
             
-            if (min == "" && max==""){
+            if (isNaN(min) && isNaN(max)){
                 rows[i].style.display = "";
             }
             else if (numseats >= min && numseats <= max){
                 rows[i].style.display = "";
             } 
-            else {
+            else if (numseats < min || numseats > max){
                 rows[i].style.display = "none";            
+            }
+            else {
+                rows[i].style.display = "";
             }
         }
 
