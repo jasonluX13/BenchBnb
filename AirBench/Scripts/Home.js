@@ -1,6 +1,7 @@
 ﻿(async () => {
-    const maxEntries = 5;
-
+    const maxEntries = 50;
+    let currentPage = 1;
+    let filteredListSize= 0;
     var map = new ol.Map({
         target: 'map',
         layers: [
@@ -25,13 +26,11 @@
             zoom = zoom - 17;
             zoom = Math.pow(2, zoom) 
             maxDiff = maxDiff/zoom;
-            console.log("MaxDiff: "+ maxDiff);
         }
         else if (zoom < 15){
             zoom = 15 - zoom;
             zoom = Math.pow(2, zoom) 
-            maxDiff = maxDiff * zoom;
-            console.log("MaxDiff: "+ maxDiff);
+            maxDiff = maxDiff * zoom;          
         }
         let latDiff = Math.abs(lat - mlat);
         let lonDiff = Math.abs(lon - mlon);
@@ -53,7 +52,6 @@
             let coordinates = ol.proj.fromLonLat(benchlonlat);
             
             if (IsMarker(coordinates[0], coordinates[1], event.coordinate[0],event.coordinate[1])){
-                console.log(benches[i]["Id"]);
                 let bench = document.getElementById('selectedBench');
                 //Redirect to details
                 document.location.href = "/Bench/Details/" + benches[i]["Id"];
@@ -66,13 +64,9 @@
         }
 
     }
-
     let response = await getBenches();
     let jsonResult = await response.json();
     let benches = jsonResult.Benches;
-    console.log(benches);
-
-
 
     var vectorSource = new ol.source.Vector({
 
@@ -110,12 +104,12 @@
         for (let i= 0 ; i < rows.length; i++){
             rows[i].style.display = "";
         }
+        filteredListSize = 0;
     }
     function updateList(pageNum){
         resetList();
         let min = parseInt(document.getElementById('min').value, 10);
         let max = parseInt(document.getElementById('max').value, 10);
-        console.log(min, max);
         
         //let pageStart = (pageNum-1)*maxEntries + 1;
         //let pageEnd = pageStart + maxEntries;
@@ -129,15 +123,18 @@
             
             if (isNaN(min) && isNaN(max)){
                 rows[i].style.display = "";
+                filteredListSize++;
             }
             else if (numseats >= min && numseats <= max){
                 rows[i].style.display = "";
+                filteredListSize++;
             } 
             else if (numseats < min || numseats > max){
                 rows[i].style.display = "none";            
             }
             else {
                 rows[i].style.display = "";
+                filteredListSize++;
             }
         }
         showPage(pageNum, false);
@@ -161,22 +158,59 @@
         else {
             let count = 0;
             for (let i= 0 ; i < rows.length; i++){
-                if (rows[i].style.display == "" && count > maxEntries){
-                    rows[i].style.display = "none";
+               
+                if (rows[i].style.display == "" ){
+                    if (count <= min){
+                        rows[i].style.display = "none";
+                    }
+                    if (count > max){
+                        rows[i].style.display = "none";
+                    }
+                    else {
+                        count++;         
+                    }
                 }
-                else if (rows[i].style.display == "") {
-                    count++;         
-                }
-                console.log(count);
+                
+                //console.log(count);
             }
         }
         
     }
-    showPage(1,true);
+    showPage(currentPage,true);
+    updateList(1);
     document.getElementById('filter').addEventListener('keyup', function (){
-        updateList(1);
+        currentPage = 1;
+        document.getElementById('prev').disabled = true;
+        document.getElementById('next').disabled = false;
+        updateList(currentPage);
     });
-    //document.getElementById('max').addEventListener('keyup', updateList);
+    let prev = document.getElementById('prev');
+    prev.disabled = true;
+    let next = document.getElementById('next');
+    prev.addEventListener('click', function(){
+        
+        if (currentPage > 1){
+            currentPage --;
+            next.disabled = false;
+            updateList(currentPage);
+        } 
+        if (currentPage < 2) {
+            prev.disabled = true;
+        }       
+    });
+    next.addEventListener('click', function(){
+        if (currentPage < filteredListSize/maxEntries-1){
+            currentPage ++;
+            prev.disabled = false;
+            updateList(currentPage);
+            
+        }
+        if (currentPage >= filteredListSize/maxEntries-1){
+            next.disabled= true;
+        }
+      
+    });
+    document.getElementById('max').addEventListener('keyup', updateList);
     map.addLayer(markerVectorLayer);
 
 })();

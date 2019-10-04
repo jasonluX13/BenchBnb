@@ -10,7 +10,7 @@
             width: 70%;
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.0.1/build/ol.js"></script> 
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.0.1/build/ol.js"></script>
 }
 
 
@@ -30,7 +30,7 @@ else
     <div id="list-container">
         <div id="filter">
             <label>Minimum Seats</label>
-            <input id="min"  type="number" value="1" />
+            <input id="min" type="number" value="1" />
             <br />
             <label>Maximum Seats</label>
             <input id="max" type="number" value="10" />
@@ -46,7 +46,7 @@ else
             <tbody>
                 @foreach (var bench in Model)
             {
-                    <tr data-numseats=@bench.NumSeats>
+                    <tr data-numseats=@bench.NumSeats data-id=@bench.Id class="bench-row">
                         <td>
                             <ul>
 
@@ -59,7 +59,7 @@ else
                                     <li>Rating: @bench.GetRating()</li>
                                 }
                                 <li>@bench.Description</li>
-                                <li>@Html.ActionLink("Details", "Details", "Bench", new { id = bench.Id }, null)</li>
+                                @Html.ActionLink("Details", "Details", "Bench", new { id = bench.Id }, new { @class = "detail-link" })
                             </ul>
                         </td>
                     </tr>
@@ -67,6 +67,10 @@ else
 
             </tbody>
         </table>
+        <div id="nav-buttons">
+            <button id="prev" class="pure-button">Prev.</button>
+            <button id="next"  class="pure-button">Next</button>
+        </div>
 
     </div>
 </div>
@@ -74,5 +78,5 @@ else
 
 
 <script src="~/Scripts/Home.js">
-      
+
 </script>

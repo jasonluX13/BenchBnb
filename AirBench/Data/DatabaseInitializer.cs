@@ -41,7 +41,7 @@ namespace AirBench.Data
             };
             context.Benches.Add(old);
             context.Benches.Add(park);
-            for (int i = 0; i < 60; i++)
+            for (int i = 0; i < 110; i++)
             {
                 Random rand = new Random();
                 int latOffset = rand.Next(i) - rand.Next(i);
@@ -50,7 +50,7 @@ namespace AirBench.Data
                 {
                     Description = $"Bench #{i}",
                     User = jason,
-                    NumSeats = 6,
+                    NumSeats = i%9,
                     Latitude = 40.755262 + latOffset * 0.001,
                     Longitude = -73.925210 - lonOffset * 0.001
                 };
