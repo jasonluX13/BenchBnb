@@ -141,7 +141,6 @@
         
     }
     function showPage(pageNum, isInitial){
-        //const maxEntries = 5; 
         let rows = document.querySelectorAll('#list tr');
         let min = (pageNum-1)*maxEntries + 1;
         let max = min + maxEntries;
@@ -171,7 +170,6 @@
                     }
                 }
                 
-                //console.log(count);
             }
         }
         
@@ -210,7 +208,6 @@
         }
       
     });
-    document.getElementById('max').addEventListener('keyup', updateList);
     map.addLayer(markerVectorLayer);
 
 })();

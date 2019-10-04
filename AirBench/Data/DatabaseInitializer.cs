@@ -64,7 +64,34 @@ namespace AirBench.Data
                 User = jason,
                 Bench = old
             };
+            Review rev2 = new Review()
+            {
+                Rating = 2,
+                Feedback = "Not bad, would sit again.",
+                SubmitedOn = DateTime.Now.AddDays(-2),
+                User = jason,
+                Bench = park
+            };
+            Review rev3 = new Review()
+            {
+                Rating = 3,
+                Feedback = "Not bad, would sit again.",
+                SubmitedOn = DateTime.Now.AddDays(-2),
+                User = jason,
+                Bench = park
+            };
+            Review rev4 = new Review()
+            {
+                Rating = 3,
+                Feedback = "Not bad, would sit again.",
+                SubmitedOn = DateTime.Now.AddDays(-2),
+                User = jason,
+                Bench = park
+            };
             context.Reviews.Add(rev1);
+            context.Reviews.Add(rev2);
+            context.Reviews.Add(rev3);
+            context.Reviews.Add(rev4);
 
             context.SaveChanges();
         }
