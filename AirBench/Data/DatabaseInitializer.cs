@@ -48,7 +48,7 @@ namespace AirBench.Data
                 int lonOffset = rand.Next(i) - rand.Next(i);
                 Bench newBench = new Bench()
                 {
-                    Description = $"Bench #{i}",
+                    Description = $"Bench #{i} a few more word until I reach more than 10 words",
                     User = jason,
                     NumSeats = i%9,
                     Latitude = 40.755262 + latOffset * 0.001,

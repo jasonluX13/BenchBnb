@@ -174,6 +174,19 @@
         }
         
     }
+    function description(){
+        let descriptions = document.getElementsByClassName('description');
+        for (let i= 0; i < descriptions.length; i++){
+            let d = descriptions[i].innerText;
+            let dArray = d.split(' ');
+            if (dArray.length > 10){
+                d = dArray.slice(0,10).join(' ');
+                d += '...';
+                descriptions[i].innerText = d;
+            }
+        }
+    }
+    description();
     showPage(currentPage,true);
     updateList(1);
     document.getElementById('filter').addEventListener('keyup', function (){

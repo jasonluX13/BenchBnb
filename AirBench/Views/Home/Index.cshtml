@@ -58,7 +58,10 @@ else
                                 {
                                     <li>Rating: @bench.GetRating()</li>
                                 }
-                                <li>@bench.Description</li>
+                                <li>Number of Seats: @bench.NumSeats</li>
+                              
+                                <li class="description">@bench.Description</li>
+
                                 @Html.ActionLink("Details", "Details", "Bench", new { id = bench.Id }, new { @class = "detail-link" })
                             </ul>
                         </td>
