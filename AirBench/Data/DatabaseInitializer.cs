@@ -41,16 +41,16 @@ namespace AirBench.Data
             };
             context.Benches.Add(old);
             context.Benches.Add(park);
-            for (int i = 0; i < 60; i++)
+            for (int i = 0; i < 110; i++)
             {
                 Random rand = new Random();
                 int latOffset = rand.Next(i) - rand.Next(i);
                 int lonOffset = rand.Next(i) - rand.Next(i);
                 Bench newBench = new Bench()
                 {
-                    Description = $"Bench #{i}",
+                    Description = $"Bench #{i} a few more word until I reach more than 10 words",
                     User = jason,
-                    NumSeats = 6,
+                    NumSeats = i%9,
                     Latitude = 40.755262 + latOffset * 0.001,
                     Longitude = -73.925210 - lonOffset * 0.001
                 };
@@ -64,7 +64,34 @@ namespace AirBench.Data
                 User = jason,
                 Bench = old
             };
+            Review rev2 = new Review()
+            {
+                Rating = 2,
+                Feedback = "Not bad, would sit again.",
+                SubmitedOn = DateTime.Now.AddDays(-2),
+                User = jason,
+                Bench = park
+            };
+            Review rev3 = new Review()
+            {
+                Rating = 3,
+                Feedback = "Not bad, would sit again.",
+                SubmitedOn = DateTime.Now.AddDays(-2),
+                User = jason,
+                Bench = park
+            };
+            Review rev4 = new Review()
+            {
+                Rating = 3,
+                Feedback = "Not bad, would sit again.",
+                SubmitedOn = DateTime.Now.AddDays(-2),
+                User = jason,
+                Bench = park
+            };
             context.Reviews.Add(rev1);
+            context.Reviews.Add(rev2);
+            context.Reviews.Add(rev3);
+            context.Reviews.Add(rev4);
 
             context.SaveChanges();
         }

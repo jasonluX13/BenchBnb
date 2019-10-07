@@ -196,7 +196,10 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\addBench.js" />
+    <Content Include="Scripts\addReview.js" />
     <Content Include="Scripts\Home.js" />
+    <Content Include="Scripts\login.js" />
+    <Content Include="Scripts\register.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
