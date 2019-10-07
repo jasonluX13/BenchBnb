@@ -16,5 +16,23 @@ function getCookie(cname) {
     return "";
 }
 
+function toggleButton() {
+    const description = document.querySelector('#description');
+    const numseats = document.querySelector('#num-seats');
+    const lat = document.querySelector('#lat');
+    const lon = document.querySelector('#lon');
+    const submitButton = document.querySelector('#submit');
+
+    if (description.value === '' || numseats.value === '' || lat.value === '' || lon.value === '') {
+        submitButton.disabled = true;
+    }
+    else {
+        submitButton.disabled = false;
+    }
+}
+
 document.getElementById("lat").value = getCookie("lat");
 document.getElementById("lon").value = getCookie("lon");
+
+document.getElementById("submit").disabled = true;
+document.getElementById("form").addEventListener('keyup', toggleButton);

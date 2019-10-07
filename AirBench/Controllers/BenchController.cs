@@ -34,6 +34,7 @@ namespace AirBench.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Add(CreateBench viewModel)
         {
             try
