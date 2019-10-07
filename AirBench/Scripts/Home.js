@@ -141,7 +141,6 @@
         
     }
     function showPage(pageNum, isInitial){
-        //const maxEntries = 5; 
         let rows = document.querySelectorAll('#list tr');
         let min = (pageNum-1)*maxEntries + 1;
         let max = min + maxEntries;
@@ -171,11 +170,23 @@
                     }
                 }
                 
-                //console.log(count);
             }
         }
         
     }
+    function description(){
+        let descriptions = document.getElementsByClassName('description');
+        for (let i= 0; i < descriptions.length; i++){
+            let d = descriptions[i].innerText;
+            let dArray = d.split(' ');
+            if (dArray.length > 10){
+                d = dArray.slice(0,10).join(' ');
+                d += '...';
+                descriptions[i].innerText = d;
+            }
+        }
+    }
+    description();
     showPage(currentPage,true);
     updateList(1);
     document.getElementById('filter').addEventListener('keyup', function (){
@@ -210,7 +221,6 @@
         }
       
     });
-    document.getElementById('max').addEventListener('keyup', updateList);
     map.addLayer(markerVectorLayer);
 
 })();

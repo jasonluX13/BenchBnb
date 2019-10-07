@@ -36,6 +36,7 @@ namespace AirBench.Models
             else
             {
                 _rating = Reviews.Average(r => r.Rating);
+                _rating = Math.Round((double)_rating, 1);
             }
             
         }
