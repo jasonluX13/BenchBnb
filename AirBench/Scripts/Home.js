@@ -71,15 +71,7 @@
     var vectorSource = new ol.source.Vector({
 
     });
-
-    for (let i = 0; i < benches.length; i++) {
-        let lon = benches[i]["Longitude"];
-        let lat = benches[i]["Latitude"];
-        let numSeats = benches[i]["NumSeats"];
-        let scale = 0.02 * numSeats;
-        if (scale > 0.6){
-            scale = 0.6;
-        }
+    let addMarker = function(lon,lat){
         var marker = new ol.Feature({
             geometry: new ol.geom.Point(
               ol.proj.fromLonLat([lon, lat])
@@ -94,6 +86,20 @@
         }));
         vectorSource.addFeature(marker);
     }
+
+    let drawMarkers = function(){
+        for (let i = 0; i < benches.length; i++) {
+            let lon = benches[i]["Longitude"];
+            let lat = benches[i]["Latitude"];
+            let numSeats = benches[i]["NumSeats"];
+            let scale = 0.02 * numSeats;
+            if (scale > 0.6){
+                scale = 0.6;
+            }
+            addMarker(lon,lat);
+        }
+    };
+    drawMarkers();
 
     var markerVectorLayer = new ol.layer.Vector({
         source: vectorSource,
@@ -155,6 +161,7 @@
             }
         }
         else {
+            vectorSource.clear();
             let count = 0;
             for (let i= 0 ; i < rows.length; i++){
                
@@ -166,7 +173,9 @@
                         rows[i].style.display = "none";
                     }
                     else {
-                        count++;         
+                        count++;
+                        
+                        addMarker(benches[i+1].Longitude, benches[i].Latitude);
                     }
                 }
                 

@@ -16,6 +16,25 @@
 //    }
 //}
 
+
+/*
+(() => {
+    function manageForm(form) {
+        const requiredInputs = Array.from(form.querySelectorAll('input[data-val-required]'));
+        const button = form.querySelector('input[type=submit]');
+
+        form.addEventListener('keyup', () => {
+            button.disabled = requiredInputs.some(ri => ri.value === '');
+        });
+
+    }
+    const forms = document.querySelector('.manage-form');
+    forms.forEach(form => manageForm(form));
+})();
+*/
+
+
+///
 let toggleButton = function () {
     const fname = document.querySelector('#firstname');
     const lname = document.querySelector('#lastname');

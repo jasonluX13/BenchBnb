@@ -50,7 +50,7 @@ namespace AirBench.Data
                 {
                     Description = $"Bench #{i} a few more word until I reach more than 10 words",
                     User = jason,
-                    NumSeats = i%9,
+                    NumSeats = i%9+1,
                     Latitude = 40.755262 + latOffset * 0.001,
                     Longitude = -73.925210 - lonOffset * 0.001
                 };
